@@ -57,4 +57,5 @@ public class MergeSort {
         //copy the temp array to the input array
         System.arraycopy(tempArr, 0, input, start, tempIdx);
     }
+
 }
