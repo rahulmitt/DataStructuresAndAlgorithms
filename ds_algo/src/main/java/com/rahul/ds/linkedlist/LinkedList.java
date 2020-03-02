@@ -19,14 +19,14 @@ public class LinkedList {
             return;
         }
 
-        Node i = head;
-        while (i.next != null) i = i.next;
-        i.next = node;
+        Node current = head;
+        while (current.next != null) current = current.next;
+        current.next = node;
     }
 
     public int count() {
         int count = 0;
-        for (Node i = head; i != null; i = i.next) count++;
+        for (Node current = head; current != null; current = current.next) count++;
         return count;
     }
 
@@ -34,18 +34,14 @@ public class LinkedList {
         return countRecursive(head);
     }
 
-    private int countRecursive(Node i) {
-        if (i == null) return 0;
-        return countRecursive(i.next) + 1;
+    private int countRecursive(Node current) {
+        if (current == null) return 0;
+        return countRecursive(current.next) + 1;
     }
 
     public void display() {
-        Node i = head;
         System.out.print("HEAD -> ");
-        while (i != null) {
-            System.out.print(i.data + " -> ");
-            i = i.next;
-        }
+        for (Node current = head; current != null; current = current.next) System.out.print(current.data + " -> ");
         System.out.println("NULL");
     }
 
@@ -54,11 +50,11 @@ public class LinkedList {
         displayRecursive(head);
     }
 
-    private void displayRecursive(Node i) {
-        if (i == null) return;
+    private void displayRecursive(Node current) {
+        if (current == null) return;
 
-        System.out.print(i.data + " -> ");
-        displayRecursive(i.next);
+        System.out.print(current.data + " -> ");
+        displayRecursive(current.next);
     }
 
     public void displayReverse() {
@@ -66,16 +62,16 @@ public class LinkedList {
         displayReverse(head);
     }
 
-    private void displayReverse(Node i) {
-        if (i == null) return;
+    private void displayReverse(Node current) {
+        if (current == null) return;
 
-        displayReverse(i.next);
-        System.out.print(i.data + " -> ");
+        displayReverse(current.next);
+        System.out.print(current.data + " -> ");
     }
 
     public int sum() {
         int sum = 0;
-        for (Node i = head; i != null; i = i.next) sum += i.data;
+        for (Node current = head; current != null; current = current.next) sum += current.data;
         return sum;
     }
 
@@ -83,15 +79,15 @@ public class LinkedList {
         return sumRecursive(head);
     }
 
-    private int sumRecursive(Node i) {
-        if (i == null) return 0;
-        return i.data + sumRecursive(i.next);
+    private int sumRecursive(Node current) {
+        if (current == null) return 0;
+        return current.data + sumRecursive(current.next);
     }
 
     public int max() {
         int max = Integer.MIN_VALUE;
-        for (Node i = head; i != null; i = i.next) {
-            if (i.data > max) max = i.data;
+        for (Node current = head; current != null; current = current.next) {
+            if (current.data > max) max = current.data;
         }
         return max;
     }
@@ -100,14 +96,14 @@ public class LinkedList {
         return maxRecursive(head);
     }
 
-    private int maxRecursive(Node i) {
-        if (i == null) return Integer.MIN_VALUE;
-        return Math.max(i.data, maxRecursive(i.next));
+    private int maxRecursive(Node current) {
+        if (current == null) return Integer.MIN_VALUE;
+        return Math.max(current.data, maxRecursive(current.next));
     }
 
     public Node linearSearch(int data) {
-        for (Node i = head; i != null; i = i.next) {
-            if (i.data == data) return i;
+        for (Node current = head; current != null; current = current.next) {
+            if (current.data == data) return current;
         }
         return null;
     }
@@ -116,10 +112,10 @@ public class LinkedList {
         return linearSearchRecursive(head, data);
     }
 
-    public Node linearSearchRecursive(Node i, int data) {
-        if (i == null) return null;
-        if (i.data == data) return i;
-        return linearSearchRecursive(i.next, data);
+    public Node linearSearchRecursive(Node current, int data) {
+        if (current == null) return null;
+        if (current.data == data) return current;
+        return linearSearchRecursive(current.next, data);
     }
 
     /*
@@ -267,7 +263,7 @@ public class LinkedList {
     }
 
     private Node reverseRecursive(Node current) {
-        if(current.next == null) return current;
+        if (current.next == null) return current;
         Node next = reverseRecursive(current.next);
         current.next.next = current;
         current.next = null;

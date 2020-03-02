@@ -18,8 +18,9 @@ public class PolynomialRepresentation {
              = 500 + 225 + 30 + 7
              = 762
         */
+        System.out.println(poly);
         int result = poly.evaluate(5);
-        System.out.println("Polinomial Evaluation: " + poly.evaluate(5));
+        System.out.println("Polinomial Evaluation: " + result);
 
     }
 

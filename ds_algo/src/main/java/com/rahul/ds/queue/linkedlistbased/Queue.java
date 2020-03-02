@@ -1,8 +1,8 @@
 package com.rahul.ds.queue.linkedlistbased;
 
 public class Queue<T> {
-    Node front;
-    Node rear;
+    Node<T> front;
+    Node<T> rear;
 
     public Queue() {
     }
@@ -12,7 +12,7 @@ public class Queue<T> {
     }
 
     public void enqueue(T element) {
-        Node node = new Node(element);
+        Node<T> node = new Node<>(element);
 
         if (isEmpty()) {
             front = node;
@@ -27,9 +27,9 @@ public class Queue<T> {
     public T dequeue() {
         if (isEmpty()) throw new RuntimeException("Underflow");
 
-        Node node = front;
+        Node<T> node = front;
         front = front.next;
-        return (T) node.data;
+        return node.data;
     }
 
     public boolean isEmpty() {

@@ -16,8 +16,11 @@ public class PolynomialAddition {
         poly2.add(4, 0);
 
         Polynomial poly3 = add(poly1, poly2);
+        System.out.println("poly1: " + poly1);
+        System.out.println("poly2: " + poly2);
+        System.out.println("poly3: " + poly3);
         int result = poly3.evaluate(5);
-        System.out.println("Polinomial Evaluation: " + poly3.evaluate(5));
+        System.out.println("Polinomial Evaluation: " + result);
 
     }
 
